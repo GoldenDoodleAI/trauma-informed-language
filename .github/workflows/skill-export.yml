@@ -1,0 +1,30 @@
+name: Skill export drift
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify-skill-exports:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      # Set to "1" in repo settings or workflow env once GoldenDoodleAI/human-centered-language
+      # and GoldenDoodleAI/human-voice exist and hold exports at the locked commits.
+      SKILL_EXPORT_VERIFY_REMOTE: ${{ vars.SKILL_EXPORT_VERIFY_REMOTE || '0' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Verify compiled packaging is up to date
+        run: python3 scripts/build.py --check
+      - name: Install GitHub CLI
+        run: sudo apt-get update && sudo apt-get install -y gh
+      - name: Verify skill exports (local + optional remote drift)
+        run: python3 scripts/verify_skill_exports.py
