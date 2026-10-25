@@ -87,6 +87,7 @@ Check `MODELS.md` for the monthly model bench before recommending a model for ru
 
 ## What not to do
 
+- Never create a repo named dignity-standard in the GoldenDoodleAI org. GitHub's redirect from the old name stops working if the name is reused.
 - Do not run `git init`, create a repository, push, or run any publish workflow unless the user explicitly asks. Installing the standard into a user's AI tool is not publishing and is allowed.
 - Do not install anything before asking the questions in `INSTALL.md`.
 
