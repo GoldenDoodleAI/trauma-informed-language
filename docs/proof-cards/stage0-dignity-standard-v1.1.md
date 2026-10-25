@@ -1,6 +1,6 @@
 # Proof card: dignity-standard companion (dignity-bench v1.1 Stage 0)
 
-**Repo:** GoldenDoodleAI/dignity-standard  
+**Repo:** GoldenDoodleAI/trauma-informed-language  
 **Branch:** `cursor/stage0-rule-boundaries-9cf1`  
 **PR:** #12 (draft)  
 **Date:** 2026-09-24  

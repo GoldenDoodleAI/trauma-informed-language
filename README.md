@@ -1,6 +1,6 @@
-# Human-centered language standard
+# Trauma-informed language standard
 
-An open, machine-readable standard for how organizations talk about people, with a trauma-informed standard on top.
+An open, machine-readable trauma-informed language standard for how organizations talk about people, including the full human-centered language standard as its base.
 
 Maintained by [GoldenDoodle AI](https://goldendoodleai.com). Editor: Laura Braden.
 
@@ -18,7 +18,7 @@ Maintained by [GoldenDoodle AI](https://goldendoodleai.com). Editor: Laura Brade
 | Tool | What to paste or upload |
 |---|---|
 | **Any model** (system prompt, RAG, API) | `packaging/compiled/human-centered-language.md` or `packaging/compiled/trauma-informed-communications.md` |
-| **Claude** | `packaging/releases/human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` (or [GitHub Releases](https://github.com/GoldenDoodleAI/dignity-standard/releases) when published). Upload under Settings → Customize → Skills. Or tell Claude to fetch this repo and set up the skill for you. |
+| **Claude** | `packaging/releases/human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Upload under Settings → Customize → Skills. Or tell Claude to fetch this repo and set up the skill for you. |
 | **ChatGPT** | Paste `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into a Project's instructions. Upload sector vocabulary from `okf/standard/vocabulary/` if needed. |
 | **Gemini** | Paste `packaging/gemini/human-centered-language.md` or `trauma-informed-communications.md` as a Gem's instructions. |
 | **Cursor / repo agent** | Read [AGENTS.md](AGENTS.md). Load `packaging/compiled/` by default. |
@@ -36,7 +36,7 @@ Model behavior changes with each release. Before choosing a model, check [MODELS
 
 ### Claude (claude.ai)
 
-1. Download `human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` from `packaging/releases/` (or [GitHub Releases](https://github.com/GoldenDoodleAI/dignity-standard/releases) when published). Each layer zip contains `SKILL.md` and `standard.md`.
+1. Download `human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` from `packaging/releases/` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Each layer zip contains `SKILL.md` and `standard.md`.
 2. In Claude, go to **Settings → Customize → Skills**. If Code execution and File creation are not already on, turn them on first; skills will not run without them.
 3. Click **Add**, then **Upload a skill**, and select the zip.
 4. Toggle it on. Claude will apply the standard automatically to writing about the people you serve, or you can invoke it directly.
