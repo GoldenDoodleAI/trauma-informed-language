@@ -111,7 +111,7 @@ def readme_text(skill_key: str, cfg: dict) -> str:
 ## Install
 
 1. Download or clone this repository.
-2. **Claude (Skills):** zip `SKILL.md` and `{ref}` together (or upload this folder) under Settings → Customize → Skills.
+2. **Claude (Skills):** turn on **Settings → Capabilities** (code execution and create/edit files). Upload a zip of `SKILL.md` and `{ref}` via **Settings → Customize → Skills → + → + Create skill → Upload a skill** (release zips from the upstream monorepo work as-is).
 3. **Other agents:** load `SKILL.md`, then load `{ref}` when the skill activates.
 
 For compiled single-file installs and trauma-informed layering, see the upstream monorepo at https://github.com/{SOURCE_REPO}.
@@ -138,7 +138,7 @@ Re-exports track commits of `{SOURCE_REPO}`. Compare `PROVENANCE` in this repo w
 ## Install
 
 1. Download or clone this repository.
-2. **Claude (Skills):** zip `SKILL.md` and `{ref}` together (or upload this folder) under Settings → Customize → Skills.
+2. **Claude (Skills):** turn on **Settings → Capabilities** (code execution and create/edit files). Upload a zip of `SKILL.md` and `{ref}` via **Settings → Customize → Skills → + → + Create skill → Upload a skill** (release zips from the upstream monorepo work as-is).
 3. Load the human-centered language skill first if you use both; this module adds style constraints only.
 
 Upstream monorepo: https://github.com/{SOURCE_REPO} (`packaging/claude-skill/{pname}/`).

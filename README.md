@@ -18,9 +18,9 @@ Maintained by [GoldenDoodle AI](https://goldendoodleai.com). Editor: Laura Brade
 | Tool | What to paste or upload |
 |---|---|
 | **Any model** (system prompt, RAG, API) | `packaging/compiled/human-centered-language.md` or `packaging/compiled/trauma-informed-communications.md` |
-| **Claude** | `packaging/releases/human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Upload under Settings → Customize → Skills. Or tell Claude to fetch this repo and set up the skill for you. |
-| **ChatGPT** | Paste `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into a Project's instructions. Upload sector vocabulary from `okf/standard/vocabulary/` if needed. |
-| **Gemini** | Paste `packaging/gemini/human-centered-language.md` or `trauma-informed-communications.md` as a Gem's instructions. |
+| **Claude** | `packaging/releases/human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Upload the zip under **Settings → Customize → Skills** (see steps below). |
+| **ChatGPT** | Paste `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into a Project's instructions (**••• → Project settings**). Upload sector vocabulary from `okf/standard/vocabulary/` if needed. |
+| **Gemini** | Paste `packaging/gemini/human-centered-language.md` or `trauma-informed-communications.md` as a Gem's instructions today. Google is moving personal accounts from Gems toward Skills around November 2026; when your account shows Skills, you can upload the same `SKILL.md` zip used for Claude. |
 | **Cursor / repo agent** | Read [AGENTS.md](AGENTS.md). Load `packaging/compiled/` by default. |
 | **Brand voice** (optional, step 9) | Interview: `okf/templates/voice-interview.md`. Blank profile: `okf/templates/voice-profile.md`. |
 
@@ -36,27 +36,30 @@ Model behavior changes with each release. Before choosing a model, check [MODELS
 
 ### Claude (claude.ai)
 
+**Prerequisites:** **Settings → Capabilities**. Turn on **Code execution** and **Create and edit files** (shown as file creation in some builds). Skills do not run without them.
+
 1. Download `human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` from `packaging/releases/` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Each layer zip contains `SKILL.md` and `standard.md`.
-2. In Claude, go to **Settings → Customize → Skills**. If Code execution and File creation are not already on, turn them on first; skills will not run without them.
-3. Click **Add**, then **Upload a skill**, and select the zip.
-4. Toggle it on. Claude will apply the standard automatically to writing about the people you serve, or you can invoke it directly.
+2. Go to **Settings → Customize → Skills → + → + Create skill → Upload a skill** and select the zip. Zip upload is the official install path.
+3. Toggle the skill on. Claude applies the standard to writing about the people you serve, or you can invoke it directly.
 
-Faster option, if your Claude has web browsing and file creation on: tell it to fetch this repo and set up the trauma-informed or human-centered language skill for you.
+**Helper (optional):** With file creation on, Claude can help you assemble the zip and walk through the upload steps. You still upload the zip yourself under **Customize → Skills**.
 
-On a Claude Team or Enterprise plan, an admin can provision this for the whole organization at once under **Organization settings → Skills**.
+On Claude Team or Enterprise, an admin can set org-wide policy under **Organization settings → Plugins & skills**.
 
 ### ChatGPT
 
 1. Create a Project.
-2. Open the project's settings and paste the contents of `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into the project instructions field.
+2. Open **••• → Project settings** and paste the contents of `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into the project instructions field.
 3. If your sector has its own vocabulary file under `okf/standard/vocabulary/` (housing, disability, substance use, mental health), upload it too as a project file.
 
-(Custom GPTs are not the recommended path here. OpenAI has stopped new GPT creation for personal accounts and is retiring the feature entirely through the rest of 2026. Projects is the stable option.)
+Custom GPTs are not the recommended path. Personal accounts on Free, Go, Plus, or Pro cannot create new custom GPTs. OpenAI is retiring custom GPTs, with standard retirement on **December 11, 2026** (some Enterprise workspaces later). See OpenAI Help: [Custom GPT retirement and migration FAQ](https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq). Prefer Projects.
 
 ### Gemini
 
-1. Create a Gem.
+1. Create a Gem (or follow the Skills flow if that is what your account shows today).
 2. Paste `packaging/gemini/human-centered-language.md` or `trauma-informed-communications.md` as its instructions.
+
+Google is transitioning personal Gemini accounts from Gems toward Skills around **November 2026**. When Skills are available on your account, you can upload the same Claude-style zip (`SKILL.md` plus `standard.md`) from `packaging/releases/`. Use whichever path your account offers today.
 
 ### Any other agent or RAG pipeline
 
@@ -78,19 +81,19 @@ The base is a subset of the trauma-informed standard, not a lighter version of i
 
 ## How the standard is tested
 
-Every week, the standard is run against a fixed set of 45 writing prompts on the current production models from each major vendor and the leading open-weight models. Each prompt runs three ways: with no standard loaded, with the human-centered language base, and with the trauma-informed standard on top. Outputs are scored by a three-family judge panel against the practice files in this repo, with human calibration on every run.
+Every month, the standard is run on the current production models from each major vendor and the leading open-weight models. Each run uses a **core set of 30 writing prompts** plus a **rotating set of 10 to 15** additional prompts. Each prompt runs three ways: with no standard loaded, with the human-centered language base, and with the trauma-informed standard on top. Outputs are scored by a **three-family judge panel** (Anthropic Opus, OpenAI GPT, and Muse families) against the practice files in this repo.
 
-The prompt set is in `tests/prompts/`. **The Human-Centered Language Benchmark** publishes methodology, judge configuration, and raw outputs with each report so anyone can regrade. Benchmark engineered by MKTNG.
+Maintainers keep a larger golden prompt library in `tests/prompts/` for CI and practice development; the monthly bench uses the core plus rotating set above.
+
+**The Human-Centered Language Benchmark** publishes methodology, judge configuration, and raw outputs with each report so anyone can regrade. Benchmark engineered by MKTNG.
 
 <!-- TODO: replace with the public methodology URL when published on goldendoodleai.com -->
-
-Results from the first four weekly runs are a calibration series and are not published as findings.
 
 ## Source of truth (maintainers and scoring)
 
 **End users should install from [`packaging/`](packaging/), not by picking individual files under `okf/`.**
 
-`okf/` is the machine-readable source catalog. It is what maintainers edit, what `scripts/build.py` renders into `packaging/`, and what the weekly test bench scores against. If compiled or platform packaging disagrees with `okf/`, trust `okf/` and regenerate packaging.
+`okf/` is the machine-readable source catalog. It is what maintainers edit, what `scripts/build.py` renders into `packaging/`, and what the monthly benchmark scores against. If compiled or platform packaging disagrees with `okf/`, trust `okf/` and regenerate packaging.
 
 ```
 okf/
@@ -121,7 +124,7 @@ For fine-grained control (custom loaders, scoring, or contributing), walk `okf/`
 
 ## Model behavior
 
-Instructions land differently across models and change with each release. See [How the standard is tested](#how-the-standard-is-tested) for the weekly bench and [MODELS.md](MODELS.md) for the current model roster.
+Instructions land differently across models and change with each release. See [How the standard is tested](#how-the-standard-is-tested) for the monthly benchmark and [MODELS.md](MODELS.md) for the current model roster.
 
 ## Contributing
 
