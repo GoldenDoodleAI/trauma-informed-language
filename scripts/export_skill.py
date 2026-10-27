@@ -74,6 +74,15 @@ def materialize_tree(commit: str) -> tuple[Path, str]:
     return tmp, target
 
 
+def claude_skill_install_bullet(ref_file: str) -> str:
+    return (
+        f"2. **Claude (Skills):** left sidebar **Customize → Skills**, **Add → Upload skill**, "
+        f"then choose a `.zip` that includes `SKILL.md` and `{ref_file}` "
+        f"(release zips from the upstream monorepo work as-is). "
+        f"Skills are managed under Customize; **Settings → Capabilities** varies by plan."
+    )
+
+
 def readme_lead_and_assistant_block() -> str:
     return (
         f"Published by **GoldenDoodle AI**. For the full install guide (every tool, "
@@ -111,7 +120,7 @@ def readme_text(skill_key: str, cfg: dict) -> str:
 ## Install
 
 1. Download or clone this repository.
-2. **Claude (Skills):** turn on **Settings → Capabilities** (code execution and create/edit files). Upload a zip of `SKILL.md` and `{ref}` via **Settings → Customize → Skills → + → + Create skill → Upload a skill** (release zips from the upstream monorepo work as-is).
+{claude_skill_install_bullet(ref)}
 3. **Other agents:** load `SKILL.md`, then load `{ref}` when the skill activates.
 
 For compiled single-file installs and trauma-informed layering, see the upstream monorepo at https://github.com/{SOURCE_REPO}.
@@ -138,7 +147,7 @@ Re-exports track commits of `{SOURCE_REPO}`. Compare `PROVENANCE` in this repo w
 ## Install
 
 1. Download or clone this repository.
-2. **Claude (Skills):** turn on **Settings → Capabilities** (code execution and create/edit files). Upload a zip of `SKILL.md` and `{ref}` via **Settings → Customize → Skills → + → + Create skill → Upload a skill** (release zips from the upstream monorepo work as-is).
+{claude_skill_install_bullet(ref)}
 3. Load the human-centered language skill first if you use both; this module adds style constraints only.
 
 Upstream monorepo: https://github.com/{SOURCE_REPO} (`packaging/claude-skill/{pname}/`).

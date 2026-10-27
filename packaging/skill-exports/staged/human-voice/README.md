@@ -19,7 +19,7 @@ This repository packages the **human voice** optional module as an agent skill. 
 ## Install
 
 1. Download or clone this repository.
-2. **Claude (Skills):** turn on **Settings → Capabilities** (code execution and create/edit files). Upload a zip of `SKILL.md` and `module.md` via **Settings → Customize → Skills → + → + Create skill → Upload a skill** (release zips from the upstream monorepo work as-is).
+2. **Claude (Skills):** left sidebar **Customize → Skills**, **Add → Upload skill**, then choose a `.zip` that includes `SKILL.md` and `module.md` (release zips from the upstream monorepo work as-is). Skills are managed under Customize; **Settings → Capabilities** varies by plan.
 3. Load the human-centered language skill first if you use both; this module adds style constraints only.
 
 Upstream monorepo: https://github.com/GoldenDoodleAI/trauma-informed-language (`packaging/claude-skill/human-voice/`).

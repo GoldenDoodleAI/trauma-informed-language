@@ -18,7 +18,7 @@ Maintained by [GoldenDoodle AI](https://goldendoodleai.com). Editor: Laura Brade
 | Tool | What to paste or upload |
 |---|---|
 | **Any model** (system prompt, RAG, API) | `packaging/compiled/human-centered-language.md` or `packaging/compiled/trauma-informed-communications.md` |
-| **Claude** | `packaging/releases/human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Upload the zip under **Settings → Customize → Skills** (see steps below). |
+| **Claude** | `packaging/releases/human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Upload via **Customize → Skills → Add → Upload skill** (see steps below). |
 | **ChatGPT** | Paste `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into a Project's instructions (**••• → Project settings**). Upload sector vocabulary from `okf/standard/vocabulary/` if needed. |
 | **Gemini** | Paste `packaging/gemini/human-centered-language.md` or `trauma-informed-communications.md` as a Gem's instructions today. Google is moving personal accounts from Gems toward Skills around November 2026; when your account shows Skills, you can upload the same `SKILL.md` zip used for Claude. |
 | **Cursor / repo agent** | Read [AGENTS.md](AGENTS.md). Load `packaging/compiled/` by default. |
@@ -36,13 +36,14 @@ Model behavior changes with each release. Before choosing a model, check [MODELS
 
 ### Claude (claude.ai)
 
-**Prerequisites:** **Settings → Capabilities**. Turn on **Code execution** and **Create and edit files** (shown as file creation in some builds). Skills do not run without them.
+Skills are managed from the left sidebar **Customize** tab (**Skills** | Connectors | Plugins). On accounts checked in October 2026, **Settings → Capabilities** only points to Customize and does not list skill upload steps; Capabilities options (tool access, artifacts, and similar) vary by plan. Some older guides mention code execution or file-creation toggles; do not assume those appear on every account.
 
-1. Download `human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` from `packaging/releases/` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Each layer zip contains `SKILL.md` and `standard.md`.
-2. Go to **Settings → Customize → Skills → + → + Create skill → Upload a skill** and select the zip. Zip upload is the official install path.
-3. Toggle the skill on. Claude applies the standard to writing about the people you serve, or you can invoke it directly.
+1. Download `human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` from `packaging/releases/` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Each layer zip contains `SKILL.md` and `standard.md` (a `.zip` with `SKILL.md` is what Claude expects).
+2. Open **Customize → Skills**. Use the **Yours** toggle if you are looking for skills you already added. Click **Add**, then **Upload skill**.
+3. On **Upload a skill**, choose the zip (drag and drop or browse). Zip upload is the official install path.
+4. Turn the skill on when prompted. Claude applies the standard to writing about the people you serve, or you can invoke it directly.
 
-**Helper (optional):** With file creation on, Claude can help you assemble the zip and walk through the upload steps. You still upload the zip yourself under **Customize → Skills**.
+**Helper (optional, not verified for every account):** Claude may help you prepare the zip or explain these steps. Pasting this repository's GitHub URL does not install the skill by itself. You still upload the zip via **Customize → Skills → Add → Upload skill**.
 
 On Claude Team or Enterprise, an admin can set org-wide policy under **Organization settings → Plugins & skills**.
 

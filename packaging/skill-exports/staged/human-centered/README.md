@@ -19,7 +19,7 @@ This repository packages the **human-centered language standard** as an agent sk
 ## Install
 
 1. Download or clone this repository.
-2. **Claude (Skills):** turn on **Settings → Capabilities** (code execution and create/edit files). Upload a zip of `SKILL.md` and `standard.md` via **Settings → Customize → Skills → + → + Create skill → Upload a skill** (release zips from the upstream monorepo work as-is).
+2. **Claude (Skills):** left sidebar **Customize → Skills**, **Add → Upload skill**, then choose a `.zip` that includes `SKILL.md` and `standard.md` (release zips from the upstream monorepo work as-is). Skills are managed under Customize; **Settings → Capabilities** varies by plan.
 3. **Other agents:** load `SKILL.md`, then load `standard.md` when the skill activates.
 
 For compiled single-file installs and trauma-informed layering, see the upstream monorepo at https://github.com/GoldenDoodleAI/trauma-informed-language.

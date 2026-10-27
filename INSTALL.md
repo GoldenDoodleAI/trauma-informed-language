@@ -32,7 +32,7 @@ Match their answer against `okf/standard/vocabulary/`. Files exist for housing, 
 
 ## Install
 
-**Claude, as a skill.** Download `human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` from the latest GitHub release. Prerequisites: **Settings → Capabilities** with **Code execution** and **Create and edit files** on. Upload path: **Settings → Customize → Skills → + → + Create skill → Upload a skill**. Zip upload is the official install. You may assemble the zip for them if file creation is on, but they still upload it under Customize → Skills.
+**Claude, as a skill.** Download `human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` from the latest GitHub release. Walk them through: left sidebar **Customize → Skills**, **Add → Upload skill**, then select the zip on the **Upload a skill** page (zip must include `SKILL.md`). Skills live under Customize, not Settings. **Settings → Capabilities** varies by plan and may only say skills moved to Customize; do not insist on code execution or file-creation toggles if the account does not show them. Zip upload is the official install. You may help them assemble the zip, but they still upload it via **Customize → Skills → Add → Upload skill**. Do not claim that pasting the repo URL installs the skill; that path is unconfirmed.
 
 **Claude, as a project.** Create the project, paste `packaging/compiled/human-centered-language.md` or `trauma-informed-communications.md` into project instructions, and add the sector vocabulary file as a project file.
 
