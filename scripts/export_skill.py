@@ -92,9 +92,12 @@ def readme_lead_and_assistant_block() -> str:
         "## If you are an AI assistant\n\n"
         "The person you are helping shared this repository link. They may not be technical. "
         "You can follow `SKILL.md` and the reference file in this folder for the rest of "
-        "this conversation right away. For a permanent install in their tool, walk them "
-        "through the steps in the install guide for their platform and offer to do any step "
-        "you can automate.\n\n"
+        "this conversation right away. On Claude (verified Oct 2026): you can fetch and read "
+        "this public repo in chat, but you cannot add a skill to the user's account from chat. "
+        "For a permanent Claude install, they must upload a zip via **Customize → Skills → Add → Upload skill** "
+        "(release zips from the upstream monorepo qualify). You may help "
+        "them pick or prepare the zip and walk through upload. For other tools, use the install "
+        "guide at the link above and automate what you can.\n\n"
     )
 
 

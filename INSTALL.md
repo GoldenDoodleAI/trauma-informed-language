@@ -1,6 +1,6 @@
 # Installing the standard
 
-This file is written for an AI agent helping a person set this up. If you are a person reading it, the short version is in the README. Or paste this repository's URL into Claude, ChatGPT, or Gemini and ask it to walk you through the install steps in the README for your tool.
+This file is written for an AI agent helping a person set this up. If you are a person reading it, the short version is in the README. On Claude, paste `https://github.com/GoldenDoodleAI/trauma-informed-language` and ask it to fetch the repo and walk you through install (verified Oct 2026: Claude can read the public repo in chat but cannot register a skill on your account). On ChatGPT or Gemini, paste the URL and ask it to follow the README steps for your tool.
 
 Agent: ask the questions below one at a time and wait for an answer. Three questions, plain language. Do not name SAMHSA, the Dart Center, or OKF in the questions. Do not dump all three at once.
 
@@ -32,7 +32,7 @@ Match their answer against `okf/standard/vocabulary/`. Files exist for housing, 
 
 ## Install
 
-**Claude, as a skill.** Download `human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` from the latest GitHub release. Walk them through: left sidebar **Customize → Skills**, **Add → Upload skill**, then select the zip on the **Upload a skill** page (zip must include `SKILL.md`). Skills live under Customize, not Settings. **Settings → Capabilities** varies by plan and may only say skills moved to Customize; do not insist on code execution or file-creation toggles if the account does not show them. Zip upload is the official install. You may help them assemble the zip, but they still upload it via **Customize → Skills → Add → Upload skill**. Do not claim that pasting the repo URL installs the skill; that path is unconfirmed.
+**Claude, as a skill.** Download `human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` from the latest GitHub release (or fetch this repo in chat and read `packaging/releases/`). Walk them through: left sidebar **Customize → Skills**, **Add → Upload skill**, then select the zip on the **Upload a skill** page (zip must include `SKILL.md`). Skills live under Customize, not Settings. **Settings → Capabilities** varies by plan and may only say skills moved to Customize; do not insist on code execution or file-creation toggles if the account does not show them. Zip upload is the official install. Verified Oct 2026: you can fetch and inspect this public repo in Claude's sandbox; you **cannot** install a skill on the user's account from chat. You may help them choose or assemble the zip and explain upload; they must upload via **Customize → Skills → Add → Upload skill**. Never claim one-click install from a pasted URL.
 
 **Claude, as a project.** Create the project, paste `packaging/compiled/human-centered-language.md` or `trauma-informed-communications.md` into project instructions, and add the sector vocabulary file as a project file.
 

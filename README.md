@@ -43,7 +43,7 @@ Skills are managed from the left sidebar **Customize** tab (**Skills** | Connect
 3. On **Upload a skill**, choose the zip (drag and drop or browse). Zip upload is the official install path.
 4. Turn the skill on when prompted. Claude applies the standard to writing about the people you serve, or you can invoke it directly.
 
-**Helper (optional, not verified for every account):** Claude may help you prepare the zip or explain these steps. Pasting this repository's GitHub URL does not install the skill by itself. You still upload the zip via **Customize → Skills → Add → Upload skill**.
+**Helper (verified on Claude Team, Oct 2026):** Paste `https://github.com/GoldenDoodleAI/trauma-informed-language` and ask Claude to fetch the repo and help you set up the skill. Claude can clone and inspect the public repository in its sandbox (read `INSTALL.md`, `packaging/`, release zips, and skill folders). Claude **cannot** add or install a skill on your account from chat. Claude may help you pick the right zip and walk through upload; you still upload it yourself via **Customize → Skills → Add → Upload skill**. There is no one-click install from a pasted URL.
 
 On Claude Team or Enterprise, an admin can set org-wide policy under **Organization settings → Plugins & skills**.
 
