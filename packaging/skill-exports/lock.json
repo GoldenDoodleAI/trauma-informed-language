@@ -2,11 +2,11 @@
   "skills": {
     "human-centered": {
       "downstream_repo": "GoldenDoodleAI/human-centered-language",
-      "source_commit": "5f459e41919f444f0d8142f2c0c149e6059898e0"
+      "source_commit": "89bd51a2c4fa43e08166ee9ec1424d4f67614eca"
     },
     "human-voice": {
       "downstream_repo": "GoldenDoodleAI/human-voice",
-      "source_commit": "5f459e41919f444f0d8142f2c0c149e6059898e0"
+      "source_commit": "89bd51a2c4fa43e08166ee9ec1424d4f67614eca"
     }
   }
 }
