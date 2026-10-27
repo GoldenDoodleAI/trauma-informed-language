@@ -21,7 +21,7 @@ Options:
 - `--commit <ref>`: git commit to export (default `HEAD`). Uses a detached worktree when not on that commit.
 - `--output <dir>`: write tree here (default `dist/export/<skill>/`).
 
-Each export contains `SKILL.md`, the reference file (`standard.md` or `module.md`), `README.md`, `LICENSE`, `SOURCES.md`, and `PROVENANCE`.
+Each export contains `SKILL.md`, the reference file (`standard.md` or `module.md`), `README.md`, `AGENTS.md`, `LICENSE`, `SOURCES.md`, and `PROVENANCE`.
 
 ## Lock file
 
