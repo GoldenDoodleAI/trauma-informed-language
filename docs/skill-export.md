@@ -21,7 +21,19 @@ Options:
 - `--commit <ref>`: git commit to export (default `HEAD`). Uses a detached worktree when not on that commit.
 - `--output <dir>`: write tree here (default `dist/export/<skill>/`).
 
-Each export contains `SKILL.md`, the reference file (`standard.md` or `module.md`), `README.md`, `LICENSE`, `SOURCES.md`, and `PROVENANCE`.
+Each export contains `SKILL.md`, the reference file (`standard.md` or `module.md`), `README.md`, `AGENTS.md`, `LICENSE`, `SOURCES.md`, and `PROVENANCE`.
+
+## Staged export trees (launch handoff)
+
+After `export_skill.py`, maintainers can copy the output into `packaging/skill-exports/staged/<skill>/` on a branch so reviewers can push to downstream repos without re-running export. Replace the whole directory when the lock commit changes.
+
+Push to a downstream repo (example):
+
+```bash
+git clone git@github.com:GoldenDoodleAI/human-centered-language.git
+rsync -a packaging/skill-exports/staged/human-centered/ human-centered-language/
+cd human-centered-language && git add -A && git commit -m "chore: re-export from trauma-informed-language @ <commit>"
+```
 
 ## Lock file
 

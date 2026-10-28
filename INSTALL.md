@@ -1,6 +1,6 @@
 # Installing the standard
 
-This file is written for an AI agent helping a person set this up. If you are a person reading it, the short version is in the README. Or paste this repository's URL into Claude, ChatGPT, or Gemini and say "read this and set it up for me."
+This file is written for an AI agent helping a person set this up. If you are a person reading it, the short version is in the README. On Claude, paste `https://github.com/GoldenDoodleAI/trauma-informed-language` and ask it to fetch the repo and walk you through install (verified Oct 2026: Claude can read the public repo in chat but cannot register a skill on your account). On ChatGPT or Gemini, paste the URL and ask it to follow the README steps for your tool.
 
 Agent: ask the questions below one at a time and wait for an answer. Three questions, plain language. Do not name SAMHSA, the Dart Center, or OKF in the questions. Do not dump all three at once.
 
@@ -22,7 +22,7 @@ Then explain the tradeoff in a line each:
 
 - **Everything.** Install as a skill (Claude) or set it in custom instructions (ChatGPT, Gemini). Applies by default, every conversation.
 - **One project.** Put it in a single Claude Project or ChatGPT Project. Applies only inside that workspace. Good if they share an account with people writing about other things.
-- **Whole organization.** If they mention a team, or their Claude account is Team or Enterprise, tell them an admin can install it once under Organization settings and skip everyone installing it individually.
+- **Whole organization.** If they mention a team, or their Claude account is Team or Enterprise, tell them an admin can set policy under **Organization settings → Plugins & skills** so people do not each install it alone.
 
 ## Question 3: sector vocabulary
 
@@ -32,13 +32,13 @@ Match their answer against `okf/standard/vocabulary/`. Files exist for housing, 
 
 ## Install
 
-**Claude, as a skill.** Download `human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` from the latest GitHub release. Settings, then Customize, then Skills, then Add, then Upload a skill. Code execution and File creation have to be on first or the skill will not run. If you have file creation available, you can build the zip and hand it to them directly instead of sending them to the release page.
+**Claude, as a skill.** Download `human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` from the latest GitHub release (or fetch this repo in chat and read `packaging/releases/`). Walk them through: left sidebar **Customize → Skills**, **Add → Upload skill**, then select the zip on the **Upload a skill** page (zip must include `SKILL.md`). Skills live under Customize, not Settings. **Settings → Capabilities** varies by plan and may only say skills moved to Customize; do not insist on code execution or file-creation toggles if the account does not show them. Zip upload is the official install. Verified Oct 2026: you can fetch and inspect this public repo in Claude's sandbox; you **cannot** install a skill on the user's account from chat. You may help them choose or assemble the zip and explain upload; they must upload via **Customize → Skills → Add → Upload skill**. Never claim one-click install from a pasted URL.
 
 **Claude, as a project.** Create the project, paste `packaging/compiled/human-centered-language.md` or `trauma-informed-communications.md` into project instructions, and add the sector vocabulary file as a project file.
 
-**ChatGPT.** Create a Project. Paste `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into the project instructions. Upload the sector vocabulary as a project file. Do not send them to Custom GPTs; OpenAI is retiring them.
+**ChatGPT.** Create a Project. Open **••• → Project settings** and paste `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into the project instructions. Upload the sector vocabulary as a project file. Do not send them to Custom GPTs. Personal Free, Go, Plus, and Pro accounts cannot create new custom GPTs; retirement is scheduled for December 11, 2026 (some Enterprise later). Cite OpenAI Help: [Custom GPT retirement and migration FAQ](https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq). Prefer Projects.
 
-**Gemini.** In Gemini Skills (when available), upload `packaging/gemini/human-centered-language.zip` or `trauma-informed-communications.zip` (each contains `SKILL.md` and `standard.md`). Optional human voice: `packaging/gemini/human-voice.zip`.
+**Gemini.** In Gemini Skills (when available), upload `packaging/gemini/human-centered-language.zip` or `trauma-informed-communications.zip` (each contains `SKILL.md` and `standard.md`). Optional human voice: `packaging/gemini/human-voice.zip`. The same release zips under `packaging/releases/` also work if your client accepts them.
 
 **Anything else.** Paste `packaging/compiled/human-centered-language.md` or `trauma-informed-communications.md` as system context.
 

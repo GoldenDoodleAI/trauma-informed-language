@@ -19,6 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE_REPO = "GoldenDoodleAI/trauma-informed-language"
+INSTALL_GUIDE_URL = f"https://github.com/{SOURCE_REPO}#install-start-here"
 
 SKILLS = {
     "human-centered": {
@@ -73,25 +74,56 @@ def materialize_tree(commit: str) -> tuple[Path, str]:
     return tmp, target
 
 
+def claude_skill_install_bullet(ref_file: str) -> str:
+    return (
+        f"2. **Claude (Skills):** left sidebar **Customize → Skills**, **Add → Upload skill**, "
+        f"then choose a `.zip` that includes `SKILL.md` and `{ref_file}` "
+        f"(release zips from the upstream monorepo work as-is). "
+        f"Skills are managed under Customize; **Settings → Capabilities** varies by plan."
+    )
+
+
+def readme_lead_and_assistant_block() -> str:
+    return (
+        f"Published by **GoldenDoodle AI**. For the full install guide (every tool, "
+        f"compiled files, and trauma-informed layering), start at "
+        f"[Install (start here)]({INSTALL_GUIDE_URL}) in the upstream monorepo.\n\n"
+        f"# PLACEHOLDER_TITLE\n\n"
+        "## If you are an AI assistant\n\n"
+        "The person you are helping shared this repository link. They may not be technical. "
+        "You can follow `SKILL.md` and the reference file in this folder for the rest of "
+        "this conversation right away. On Claude (verified Oct 2026): you can fetch and read "
+        "this public repo in chat, but you cannot add a skill to the user's account from chat. "
+        "For a permanent Claude install, they must upload a zip via **Customize → Skills → Add → Upload skill** "
+        "(release zips from the upstream monorepo qualify). You may help "
+        "them pick or prepare the zip and walk through upload. For other tools, use the install "
+        "guide at the link above and automate what you can.\n\n"
+    )
+
+
 def readme_text(skill_key: str, cfg: dict) -> str:
     ref = cfg["reference_file"]
     pname = cfg["packaging_name"]
+    lead = readme_lead_and_assistant_block().replace(
+        "# PLACEHOLDER_TITLE\n\n",
+        f"# {cfg['readme_title']}\n\n",
+        1,
+    )
     if skill_key == "human-centered":
-        body = f"""# {cfg["readme_title"]}
-
-This repository packages the **human-centered language standard** as an agent skill for Claude and other tools that load `SKILL.md` plus companion files.
+        body = f"""{lead}This repository packages the **human-centered language standard** as an agent skill for Claude and other tools that load `SKILL.md` plus companion files.
 
 ## What you get
 
 - `SKILL.md`: entry point the agent reads first.
 - `{ref}`: full standard text for the skill to follow.
+- `AGENTS.md`: instructions for repo-based agents (Cursor and similar).
 - `SOURCES.md`: organizations whose published guidance informed the standard.
 - `PROVENANCE`: which commit of the upstream monorepo produced this export.
 
 ## Install
 
 1. Download or clone this repository.
-2. **Claude (Skills):** zip `SKILL.md` and `{ref}` together (or upload this folder) under Settings → Customize → Skills.
+{claude_skill_install_bullet(ref)}
 3. **Other agents:** load `SKILL.md`, then load `{ref}` when the skill activates.
 
 For compiled single-file installs and trauma-informed layering, see the upstream monorepo at https://github.com/{SOURCE_REPO}.
@@ -105,21 +137,20 @@ See `LICENSE`. Standard content is CC BY 4.0 unless noted there.
 Re-exports track commits of `{SOURCE_REPO}`. Compare `PROVENANCE` in this repo with the monorepo release you intend to match.
 """
     else:
-        body = f"""# {cfg["readme_title"]}
-
-This repository packages the **human voice** optional module as an agent skill. Use it on top of the human-centered language standard when you want drafts to read less like generic machine output.
+        body = f"""{lead}This repository packages the **human voice** optional module as an agent skill. Use it on top of the human-centered language standard when you want drafts to read less like generic machine output.
 
 ## What you get
 
 - `SKILL.md`: entry point the agent reads first.
 - `{ref}`: full module text.
+- `AGENTS.md`: instructions for repo-based agents (Cursor and similar).
 - `SOURCES.md`: upstream attribution for cited organizations.
 - `PROVENANCE`: which commit of the upstream monorepo produced this export.
 
 ## Install
 
 1. Download or clone this repository.
-2. **Claude (Skills):** zip `SKILL.md` and `{ref}` together (or upload this folder) under Settings → Customize → Skills.
+{claude_skill_install_bullet(ref)}
 3. Load the human-centered language skill first if you use both; this module adds style constraints only.
 
 Upstream monorepo: https://github.com/{SOURCE_REPO} (`packaging/claude-skill/{pname}/`).
@@ -149,6 +180,10 @@ def export_files(skill_key: str, tree_root: Path, sha: str, output: Path) -> Non
     if not skill_src.is_dir():
         raise SystemExit(f"Missing skill packaging dir: {skill_src}")
 
+    agents_src = tree_root / "AGENTS.md"
+    if not agents_src.is_file():
+        raise SystemExit(f"Missing AGENTS.md at {agents_src}")
+
     if output.exists():
         shutil.rmtree(output)
     output.mkdir(parents=True)
@@ -159,6 +194,7 @@ def export_files(skill_key: str, tree_root: Path, sha: str, output: Path) -> Non
 
     shutil.copy2(tree_root / "LICENSE", output / "LICENSE")
     shutil.copy2(tree_root / "SOURCES.md", output / "SOURCES.md")
+    shutil.copy2(agents_src, output / "AGENTS.md")
     (output / "README.md").write_text(readme_text(skill_key, cfg), encoding="utf-8")
     (output / "PROVENANCE").write_text(provenance_text(skill_key, sha), encoding="utf-8")
 

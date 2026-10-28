@@ -7,7 +7,7 @@ Consumers should grab ready-to-load files from [`packaging/`](../packaging/):
 - `packaging/compiled/human-centered-language.md` or `trauma-informed-communications.md` (any model)
 - `packaging/chatgpt/`, `packaging/gemini/`, or `packaging/releases/` for platform-specific installs
 
-`okf/` is the machine-readable source catalog. Maintainers edit here; `scripts/build.py` renders into `packaging/`. The weekly test bench scores against these practice files.
+`okf/` is the machine-readable source catalog. Maintainers edit here; `scripts/build.py` renders into `packaging/`. The monthly benchmark scores against these practice files.
 
 ## Bundle contents
 

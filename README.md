@@ -18,8 +18,8 @@ Maintained by [GoldenDoodle AI](https://goldendoodleai.com). Editor: Laura Brade
 | Tool | What to paste or upload |
 |---|---|
 | **Any model** (system prompt, RAG, API) | `packaging/compiled/human-centered-language.md` or `packaging/compiled/trauma-informed-communications.md` |
-| **Claude** | `packaging/releases/human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Upload under Settings → Customize → Skills. Or tell Claude to fetch this repo and set up the skill for you. |
-| **ChatGPT** | Paste `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into a Project's instructions. Upload sector vocabulary from `okf/standard/vocabulary/` if needed. |
+| **Claude** | `packaging/releases/human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Upload via **Customize → Skills → Add → Upload skill** (see steps below). |
+| **ChatGPT** | Paste `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into a Project's instructions (**••• → Project settings**). Upload sector vocabulary from `okf/standard/vocabulary/` if needed. |
 | **Gemini** | Upload `packaging/gemini/human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` (or the matching folder under `packaging/gemini/`) in **Gemini Skills**. |
 | **Cursor / repo agent** | Read [AGENTS.md](AGENTS.md). Load `packaging/compiled/` by default. |
 | **Brand voice** (optional, step 9) | Interview: `okf/templates/voice-interview.md`. Blank profile: `okf/templates/voice-profile.md`. |
@@ -36,22 +36,24 @@ Model behavior changes with each release. Before choosing a model, check [MODELS
 
 ### Claude (claude.ai)
 
-1. Download `human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` from `packaging/releases/` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Each layer zip contains `SKILL.md` and `standard.md`.
-2. In Claude, go to **Settings → Customize → Skills**. If Code execution and File creation are not already on, turn them on first; skills will not run without them.
-3. Click **Add**, then **Upload a skill**, and select the zip.
-4. Toggle it on. Claude will apply the standard automatically to writing about the people you serve, or you can invoke it directly.
+Skills are managed from the left sidebar **Customize** tab (**Skills** | Connectors | Plugins). On accounts checked in October 2026, **Settings → Capabilities** only points to Customize and does not list skill upload steps; Capabilities options (tool access, artifacts, and similar) vary by plan. Some older guides mention code execution or file-creation toggles; do not assume those appear on every account.
 
-Faster option, if your Claude has web browsing and file creation on: tell it to fetch this repo and set up the trauma-informed or human-centered language skill for you.
+1. Download `human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` from `packaging/releases/` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Each layer zip contains `SKILL.md` and `standard.md` (a `.zip` with `SKILL.md` is what Claude expects).
+2. Open **Customize → Skills**. Use the **Yours** toggle if you are looking for skills you already added. Click **Add**, then **Upload skill**.
+3. On **Upload a skill**, choose the zip (drag and drop or browse). Zip upload is the official install path.
+4. Turn the skill on when prompted. Claude applies the standard to writing about the people you serve, or you can invoke it directly.
 
-On a Claude Team or Enterprise plan, an admin can provision this for the whole organization at once under **Organization settings → Skills**.
+**Helper (verified on Claude Team, Oct 2026):** Paste `https://github.com/GoldenDoodleAI/trauma-informed-language` and ask Claude to fetch the repo and help you set up the skill. Claude can clone and inspect the public repository in its sandbox (read `INSTALL.md`, `packaging/`, release zips, and skill folders). Claude **cannot** add or install a skill on your account from chat. Claude may help you pick the right zip and walk through upload; you still upload it yourself via **Customize → Skills → Add → Upload skill**. There is no one-click install from a pasted URL.
+
+On Claude Team or Enterprise, an admin can set org-wide policy under **Organization settings → Plugins & skills**.
 
 ### ChatGPT
 
 1. Create a Project.
-2. Open the project's settings and paste the contents of `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into the project instructions field.
+2. Open **••• → Project settings** and paste the contents of `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into the project instructions field.
 3. If your sector has its own vocabulary file under `okf/standard/vocabulary/` (housing, disability, substance use, mental health), upload it too as a project file.
 
-(Custom GPTs are not the recommended path here. OpenAI has stopped new GPT creation for personal accounts and is retiring the feature entirely through the rest of 2026. Projects is the stable option.)
+Custom GPTs are not the recommended path. Personal accounts on Free, Go, Plus, or Pro cannot create new custom GPTs. OpenAI is retiring custom GPTs, with standard retirement on **December 11, 2026** (some Enterprise workspaces later). See OpenAI Help: [Custom GPT retirement and migration FAQ](https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq). Prefer Projects.
 
 ### Gemini
 
@@ -126,7 +128,7 @@ For fine-grained control (custom loaders, scoring, or contributing), walk `okf/`
 
 ## Model behavior
 
-Instructions land differently across models and change with each release. See [How the standard is tested](#how-the-standard-is-tested) for the monthly bench and [MODELS.md](MODELS.md) for the current model roster.
+Instructions land differently across models and change with each release. See [How the standard is tested](#how-the-standard-is-tested) for the monthly benchmark and [MODELS.md](MODELS.md) for the current model roster.
 
 ## Contributing
 
