@@ -1,7 +1,7 @@
 ---
 type: template
 title: Brand voice profile (blank, with instructions)
-description: Blank organizational voice profile from GoldenDoodle AI, with directions for every field. Fill it in by hand or run voice-interview.md with your model of choice. Loads last (step 9 in load-order.md); it may set tone and preferred terms but never override a rule in the standard.
+description: Blank organizational voice profile from GoldenDoodle AI, with directions for every field. Fill it in by hand or run voice-interview.md with your model of choice. Loads last (step 9 in load-order.md); it may set tone and preferred terms but never override a practice in the standard.
 tags: [template, brand-voice, goldendoodle, voice-profile]
 version: 2
 ---

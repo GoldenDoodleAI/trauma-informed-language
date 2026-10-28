@@ -38,7 +38,7 @@ Match their answer against `okf/standard/vocabulary/`. Files exist for housing, 
 
 **ChatGPT.** Create a Project. Paste `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into the project instructions. Upload the sector vocabulary as a project file. Do not send them to Custom GPTs; OpenAI is retiring them.
 
-**Gemini.** Create a Gem. Paste `packaging/gemini/human-centered-language.md` or `trauma-informed-communications.md` as its instructions.
+**Gemini.** In Gemini Skills (when available), upload `packaging/gemini/human-centered-language.zip` or `trauma-informed-communications.zip` (each contains `SKILL.md` and `standard.md`). Optional human voice: `packaging/gemini/human-voice.zip`.
 
 **Anything else.** Paste `packaging/compiled/human-centered-language.md` or `trauma-informed-communications.md` as system context.
 

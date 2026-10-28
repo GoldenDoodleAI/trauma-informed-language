@@ -31,7 +31,7 @@ After any change under `okf/`, regenerate derived outputs:
 python3 scripts/build.py
 ```
 
-This updates `packaging/compiled/`, `packaging/chatgpt/`, `packaging/gemini/`, `packaging/claude-skill/*/standard.md`, `packaging/claude-skill/human-voice/module.md`, and `packaging/releases/*.zip`. Commit the regenerated files with your pull request.
+This updates `packaging/compiled/`, `packaging/chatgpt/`, `packaging/gemini/*/` (Skills folders and zips), `packaging/claude-skill/*/standard.md`, `packaging/claude-skill/human-voice/module.md`, and `packaging/releases/*.zip`. Commit the regenerated files with your pull request.
 
 ## Process
 

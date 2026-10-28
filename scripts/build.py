@@ -145,7 +145,7 @@ def layer_output_paths(layer_key, filename_stem):
         PKG / "compiled" / f"{filename_stem}.md",
         PKG / "claude-skill" / layer_key / "standard.md",
         PKG / "chatgpt" / f"{filename_stem}.md",
-        PKG / "gemini" / f"{filename_stem}.md",
+        PKG / "gemini" / layer_key / "standard.md",
     ]
 
 
@@ -155,8 +155,40 @@ def human_voice_outputs():
         PKG / "compiled" / content_name,
         PKG / "claude-skill" / "human-voice" / "module.md",
         PKG / "chatgpt" / content_name,
-        PKG / "gemini" / content_name,
+        PKG / "gemini" / "human-voice" / "module.md",
     ]
+
+
+def build_gemini_zip(skill_name, check, stale):
+    """Zip a Gemini skill folder (SKILL.md + companion) for upload."""
+    skill_dir = PKG / "gemini" / skill_name
+    zip_path = PKG / "gemini" / f"{skill_name}.zip"
+    zip_path.parent.mkdir(parents=True, exist_ok=True)
+
+    if check:
+        if not zip_path.exists():
+            stale.append(str(zip_path.relative_to(ROOT)))
+            return
+        with zipfile.ZipFile(zip_path, "r") as existing:
+            expected = {
+                (path.relative_to(skill_dir).as_posix(), path.read_bytes())
+                for path in skill_dir.iterdir()
+                if path.is_file()
+            }
+            actual = {
+                (info.filename, existing.read(info.filename))
+                for info in existing.infolist()
+                if not info.is_dir()
+            }
+            if expected != actual:
+                stale.append(str(zip_path.relative_to(ROOT)))
+        return
+
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        for path in sorted(skill_dir.iterdir()):
+            if path.is_file():
+                zf.write(path, arcname=path.name)
+    print(f"wrote {zip_path.relative_to(ROOT)}")
 
 
 def write_or_check(path, content, check, stale):
@@ -291,16 +323,22 @@ def main():
         write_or_check(skill_dir / "standard.md", content, check, stale)
         write_or_check(skill_dir / "SKILL.md", skill_md(layer_key), check, stale)
 
+        gemini_dir = PKG / "gemini" / layer_key
+        write_or_check(gemini_dir / "SKILL.md", skill_md(layer_key), check, stale)
+
     human_voice_content = render_human_voice()
     for out in human_voice_outputs():
         write_or_check(out, human_voice_content, check, stale)
     hv_dir = PKG / "claude-skill" / "human-voice"
     write_or_check(hv_dir / "module.md", human_voice_content, check, stale)
     write_or_check(hv_dir / "SKILL.md", skill_md("human-voice"), check, stale)
+    gemini_hv = PKG / "gemini" / "human-voice"
+    write_or_check(gemini_hv / "SKILL.md", skill_md("human-voice"), check, stale)
 
     if not check:
         for layer_key in LAYERS:
             build_skill_zip(layer_key, check=False, stale=stale)
+            build_gemini_zip(layer_key, check=False, stale=stale)
             legacy_zip = LAYERS[layer_key]["legacy_zip"]
             if legacy_zip != layer_key:
                 src_zip = PKG / "releases" / f"{layer_key}.zip"
@@ -308,6 +346,7 @@ def main():
                 dest_zip.write_bytes(src_zip.read_bytes())
                 print(f"wrote {dest_zip.relative_to(ROOT)} (legacy alias)")
         build_skill_zip("human-voice", check=False, stale=stale)
+        build_gemini_zip("human-voice", check=False, stale=stale)
         for skill_name in PLUGIN_DESCRIPTION:
             sync_plugin_dir(skill_name, check=False, stale=stale)
         build_marketplaces(check=False, stale=stale)
@@ -317,11 +356,13 @@ def main():
         build_marketplaces(check=True, stale=stale)
         for layer_key, cfg in LAYERS.items():
             build_skill_zip(layer_key, check=True, stale=stale)
+            build_gemini_zip(layer_key, check=True, stale=stale)
             if cfg["legacy_zip"] != layer_key:
                 legacy_zip = PKG / "releases" / f"{cfg['legacy_zip']}.zip"
                 if not legacy_zip.exists():
                     stale.append(str(legacy_zip.relative_to(ROOT)))
         build_skill_zip("human-voice", check=True, stale=stale)
+        build_gemini_zip("human-voice", check=True, stale=stale)
 
     if check and stale:
         print("Stale compiled files (run scripts/build.py):")

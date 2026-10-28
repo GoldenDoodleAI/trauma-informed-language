@@ -1,6 +1,6 @@
 # Models
 
-The tested roster and judge panel are defined in the bench repository's `models.yaml`. This file is a pointer so the standard repo stays about the standard. See **The Human-Centered Language Benchmark** methodology when published (TODO: public URL on goldendoodleai.com).
+The tested roster is defined in the bench repository's `models.yaml`. Judges are defined in `judges.yaml` (three families: Anthropic Claude Opus 4.6, OpenAI GPT-5.5, Meta Muse Spark 1.3). This file is a pointer so the standard repo stays about the standard. See **The Human-Centered Language Benchmark** methodology when published (TODO: public URL on goldendoodleai.com).
 
 Roster principles (full reasoning in the bench METHODOLOGY.md):
 

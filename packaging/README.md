@@ -6,9 +6,9 @@ Pick one layer, then use the matching file or zip:
 
 | Layer | Compiled | ChatGPT | Gemini | Claude |
 |---|---|---|---|---|
-| Human-centered language (base) | `compiled/human-centered-language.md` | `chatgpt/human-centered-language.md` | `gemini/human-centered-language.md` | `releases/human-centered-language.zip` |
-| Trauma-informed | `compiled/trauma-informed-communications.md` | `chatgpt/trauma-informed-communications.md` | `gemini/trauma-informed-communications.md` | `releases/trauma-informed-communications.zip` |
-| Human voice (optional) | `compiled/human-voice.md` | `chatgpt/human-voice.md` | `gemini/human-voice.md` | `releases/human-voice.zip` |
+| Human-centered language (base) | `compiled/human-centered-language.md` | `chatgpt/human-centered-language.md` | `gemini/human-centered-language/` or `gemini/human-centered-language.zip` | `releases/human-centered-language.zip` |
+| Trauma-informed | `compiled/trauma-informed-communications.md` | `chatgpt/trauma-informed-communications.md` | `gemini/trauma-informed-communications/` or `gemini/trauma-informed-communications.zip` | `releases/trauma-informed-communications.zip` |
+| Human voice (optional) | `compiled/human-voice.md` | `chatgpt/human-voice.md` | `gemini/human-voice/` or `gemini/human-voice.zip` | `releases/human-voice.zip` |
 
 **Legacy compiled aliases (one release):** `compiled/dignified-language.md` and `compiled/trauma-informed.md` match the primary files above.
 
@@ -18,7 +18,7 @@ Everything here is derived from `okf/`. If anything disagrees with `okf/`, **`ok
 
 - `compiled/`: single-file renders for any model or RAG pipeline. Paste as system context.
 - `chatgpt/`: instruction text for a ChatGPT Project.
-- `gemini/`: instruction text for a Gem.
+- `gemini/`: Gemini Skills folders (`SKILL.md` + `standard.md` or `module.md`) and matching zips. See `gemini/README.md`.
 - `claude-skill/human-centered-language/` and `claude-skill/trauma-informed-communications/`: self-contained Claude skill folders. Each `SKILL.md` is the entry point and references `standard.md` in the same folder.
 - `releases/`: zip archives of each Claude skill folder for upload. GitHub Release assets are preferred when available; these copies are the fallback.
 - `claude-skill/human-voice/`: optional human voice module. `SKILL.md` references `module.md`.

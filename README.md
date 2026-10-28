@@ -20,7 +20,7 @@ Maintained by [GoldenDoodle AI](https://goldendoodleai.com). Editor: Laura Brade
 | **Any model** (system prompt, RAG, API) | `packaging/compiled/human-centered-language.md` or `packaging/compiled/trauma-informed-communications.md` |
 | **Claude** | `packaging/releases/human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Upload under Settings → Customize → Skills. Or tell Claude to fetch this repo and set up the skill for you. |
 | **ChatGPT** | Paste `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into a Project's instructions. Upload sector vocabulary from `okf/standard/vocabulary/` if needed. |
-| **Gemini** | Paste `packaging/gemini/human-centered-language.md` or `trauma-informed-communications.md` as a Gem's instructions. |
+| **Gemini** | Upload `packaging/gemini/human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` (or the matching folder under `packaging/gemini/`) in **Gemini Skills**. |
 | **Cursor / repo agent** | Read [AGENTS.md](AGENTS.md). Load `packaging/compiled/` by default. |
 | **Brand voice** (optional, step 9) | Interview: `okf/templates/voice-interview.md`. Blank profile: `okf/templates/voice-profile.md`. |
 
@@ -55,8 +55,9 @@ On a Claude Team or Enterprise plan, an admin can provision this for the whole o
 
 ### Gemini
 
-1. Create a Gem.
-2. Paste `packaging/gemini/human-centered-language.md` or `trauma-informed-communications.md` as its instructions.
+1. Open **Skills** in Gemini (when available in your account).
+2. Upload `packaging/gemini/human-centered-language.zip` or `trauma-informed-communications.zip` from this repo (each zip contains `SKILL.md` and `standard.md`). For the optional human voice module, use `packaging/gemini/human-voice.zip` (`SKILL.md` + `module.md`).
+3. Toggle the skill on. The same release zips under `packaging/releases/` also work if your client accepts them; the `packaging/gemini/` copies are the Gemini-specific entry points.
 
 ### Any other agent or RAG pipeline
 
@@ -78,19 +79,23 @@ The base is a subset of the trauma-informed standard, not a lighter version of i
 
 ## How the standard is tested
 
-Every week, the standard is run against a fixed set of 45 writing prompts on the current production models from each major vendor and the leading open-weight models. Each prompt runs three ways: with no standard loaded, with the human-centered language base, and with the trauma-informed standard on top. Outputs are scored by a three-family judge panel against the practice files in this repo, with human calibration on every run.
+**The Human-Centered Language Benchmark** runs monthly against the current production models from each major vendor and leading open-weight hosts. The active prompt set is **45 prompts** (all 45 run every month). Each prompt is exercised three ways: with no standard loaded, with the human-centered language base, and with the trauma-informed standard on top.
 
-The prompt set is in `tests/prompts/`. **The Human-Centered Language Benchmark** publishes methodology, judge configuration, and raw outputs with each report so anyone can regrade. Benchmark engineered by MKTNG.
+The optional **human voice** module rotates on a separate arm: one third of the 45 prompts (15 prompts) per monthly run, cycling through three fixed thirds so every prompt gets a human-voice check over the quarter.
+
+Outputs are scored against the practice files in this repo by a **three-family judge panel**: Anthropic (Claude Opus 4.6), OpenAI (GPT-5.5), and Meta (Muse Spark 1.3). Human calibration sits on every run.
+
+Golden prompts for contributors live in `tests/prompts/`. The benchmark repository publishes methodology, judge configuration, and raw outputs with each report so anyone can regrade. Benchmark engineered by MKTNG.
 
 <!-- TODO: replace with the public methodology URL when published on goldendoodleai.com -->
 
-Results from the first four weekly runs are a calibration series and are not published as findings.
+Early monthly runs are a calibration series and are not published as findings.
 
 ## Source of truth (maintainers and scoring)
 
 **End users should install from [`packaging/`](packaging/), not by picking individual files under `okf/`.**
 
-`okf/` is the machine-readable source catalog. It is what maintainers edit, what `scripts/build.py` renders into `packaging/`, and what the weekly test bench scores against. If compiled or platform packaging disagrees with `okf/`, trust `okf/` and regenerate packaging.
+`okf/` is the machine-readable source catalog. It is what maintainers edit, what `scripts/build.py` renders into `packaging/`, and what the monthly benchmark scores against. If compiled or platform packaging disagrees with `okf/`, trust `okf/` and regenerate packaging.
 
 ```
 okf/
@@ -121,7 +126,7 @@ For fine-grained control (custom loaders, scoring, or contributing), walk `okf/`
 
 ## Model behavior
 
-Instructions land differently across models and change with each release. See [How the standard is tested](#how-the-standard-is-tested) for the weekly bench and [MODELS.md](MODELS.md) for the current model roster.
+Instructions land differently across models and change with each release. See [How the standard is tested](#how-the-standard-is-tested) for the monthly bench and [MODELS.md](MODELS.md) for the current model roster.
 
 ## Contributing
 
