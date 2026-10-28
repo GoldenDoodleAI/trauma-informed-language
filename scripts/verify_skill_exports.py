@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 LOCK_PATH = ROOT / "packaging" / "skill-exports" / "lock.json"
 
-COMPARE_NAMES = ("SKILL.md", "README.md", "LICENSE", "SOURCES.md", "PROVENANCE")
+COMPARE_NAMES = ("SKILL.md", "README.md", "LICENSE", "SOURCES.md", "PROVENANCE", "AGENTS.md")
 
 
 def sha256_file(path: Path) -> str:

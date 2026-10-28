@@ -6,7 +6,7 @@ metadata:
   version: 0.2.0
 ---
 
-# Dignified Language Standard
+# Human-Centered Language Standard
 
 When this skill is active, follow the standard in `standard.md` in this folder. Read it fully before writing.
 
