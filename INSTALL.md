@@ -38,7 +38,7 @@ Match their answer against `okf/standard/vocabulary/`. Files exist for housing, 
 
 **ChatGPT.** Create a Project. Open **••• → Project settings** and paste `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into the project instructions. Upload the sector vocabulary as a project file. Do not send them to Custom GPTs. Personal Free, Go, Plus, and Pro accounts cannot create new custom GPTs; retirement is scheduled for December 11, 2026 (some Enterprise later). Cite OpenAI Help: [Custom GPT retirement and migration FAQ](https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq). Prefer Projects.
 
-**Gemini.** Create a Gem if that is what the account shows, or use Skills when available. Paste `packaging/gemini/human-centered-language.md` or `trauma-informed-communications.md` as instructions. Personal accounts are moving from Gems toward Skills around November 2026; Skills can take the same `SKILL.md` zip as Claude when that path appears.
+**Gemini.** In Gemini Skills (when available), upload `packaging/gemini/human-centered-language.zip` or `trauma-informed-communications.zip` (each contains `SKILL.md` and `standard.md`). Optional human voice: `packaging/gemini/human-voice.zip`. The same release zips under `packaging/releases/` also work if your client accepts them.
 
 **Anything else.** Paste `packaging/compiled/human-centered-language.md` or `trauma-informed-communications.md` as system context.
 

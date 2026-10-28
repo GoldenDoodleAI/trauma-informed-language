@@ -81,7 +81,7 @@ Check `MODELS.md` for the monthly model bench before recommending a model for ru
 
 ## Maintainer rules
 
-- Do not hand-edit generated files under `packaging/compiled/`, `packaging/chatgpt/`, `packaging/gemini/`, generated `standard.md` / `module.md` under `packaging/claude-skill/`, or files under `plugins/` that `build.py` generates. Regenerate with `python3 scripts/build.py` after changes under `okf/`.
+- Do not hand-edit generated files under `packaging/compiled/`, `packaging/chatgpt/`, `packaging/gemini/` (Skills folders, zips, and `SKILL.md`), generated `standard.md` / `module.md` under `packaging/claude-skill/`, or files under `plugins/` that `build.py` generates. Regenerate with `python3 scripts/build.py` after changes under `okf/`.
 - Do not rewrite practice bodies under `okf/*/rules/` unless the user explicitly requests a practice change.
 - New practices need a before-and-after example and a test prompt, same as every existing file.
 

@@ -29,6 +29,6 @@ Input: "Rewrite for our newsletter: Maria found an apartment after six months on
 ## Guidance
 
 - Preserve structure, perspective, tone, and every fact the user supplied. See the rewrite protocol for the full checklist.
-- Apply vocabulary and dignity rules silently inside the existing sentences. Do not rewrite the piece into a different genre.
+- Apply vocabulary and dignity practices silently inside the existing sentences. Do not rewrite the piece into a different genre.
 - Do not add trauma, crisis, or recovery arcs. Do not make the organization the hero of a story the user wrote about someone else's effort.
 - Return revised text only, with at most a one-line note after the content if a change is large enough that the writer might not recognize their intent.

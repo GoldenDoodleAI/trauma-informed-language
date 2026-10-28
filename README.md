@@ -20,7 +20,7 @@ Maintained by [GoldenDoodle AI](https://goldendoodleai.com). Editor: Laura Brade
 | **Any model** (system prompt, RAG, API) | `packaging/compiled/human-centered-language.md` or `packaging/compiled/trauma-informed-communications.md` |
 | **Claude** | `packaging/releases/human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` (or [GitHub Releases](https://github.com/GoldenDoodleAI/trauma-informed-language/releases) when published). Upload via **Customize → Skills → Add → Upload skill** (see steps below). |
 | **ChatGPT** | Paste `packaging/chatgpt/human-centered-language.md` or `trauma-informed-communications.md` into a Project's instructions (**••• → Project settings**). Upload sector vocabulary from `okf/standard/vocabulary/` if needed. |
-| **Gemini** | Paste `packaging/gemini/human-centered-language.md` or `trauma-informed-communications.md` as a Gem's instructions today. Google is moving personal accounts from Gems toward Skills around November 2026; when your account shows Skills, you can upload the same `SKILL.md` zip used for Claude. |
+| **Gemini** | Upload `packaging/gemini/human-centered-language.zip`, `trauma-informed-communications.zip`, or `human-voice.zip` (or the matching folder under `packaging/gemini/`) in **Gemini Skills**. |
 | **Cursor / repo agent** | Read [AGENTS.md](AGENTS.md). Load `packaging/compiled/` by default. |
 | **Brand voice** (optional, step 9) | Interview: `okf/templates/voice-interview.md`. Blank profile: `okf/templates/voice-profile.md`. |
 
@@ -57,10 +57,9 @@ Custom GPTs are not the recommended path. Personal accounts on Free, Go, Plus, o
 
 ### Gemini
 
-1. Create a Gem (or follow the Skills flow if that is what your account shows today).
-2. Paste `packaging/gemini/human-centered-language.md` or `trauma-informed-communications.md` as its instructions.
-
-Google is transitioning personal Gemini accounts from Gems toward Skills around **November 2026**. When Skills are available on your account, you can upload the same Claude-style zip (`SKILL.md` plus `standard.md`) from `packaging/releases/`. Use whichever path your account offers today.
+1. Open **Skills** in Gemini (when available in your account).
+2. Upload `packaging/gemini/human-centered-language.zip` or `trauma-informed-communications.zip` from this repo (each zip contains `SKILL.md` and `standard.md`). For the optional human voice module, use `packaging/gemini/human-voice.zip` (`SKILL.md` + `module.md`).
+3. Toggle the skill on. The same release zips under `packaging/releases/` also work if your client accepts them; the `packaging/gemini/` copies are the Gemini-specific entry points.
 
 ### Any other agent or RAG pipeline
 
@@ -82,13 +81,17 @@ The base is a subset of the trauma-informed standard, not a lighter version of i
 
 ## How the standard is tested
 
-Every month, the standard is run on the current production models from each major vendor and the leading open-weight models. Each run uses a **core set of 30 writing prompts** plus a **rotating set of 10 to 15** additional prompts. Each prompt runs three ways: with no standard loaded, with the human-centered language base, and with the trauma-informed standard on top. Outputs are scored by a **three-family judge panel** (Anthropic Opus, OpenAI GPT, and Muse families) against the practice files in this repo.
+**The Human-Centered Language Benchmark** runs monthly against the current production models from each major vendor and leading open-weight hosts. The active prompt set is **45 prompts** (all 45 run every month). Each prompt is exercised three ways: with no standard loaded, with the human-centered language base, and with the trauma-informed standard on top.
 
-Maintainers keep a larger golden prompt library in `tests/prompts/` for CI and practice development; the monthly bench uses the core plus rotating set above.
+The optional **human voice** module rotates on a separate arm: one third of the 45 prompts (15 prompts) per monthly run, cycling through three fixed thirds so every prompt gets a human-voice check over the quarter.
 
-**The Human-Centered Language Benchmark** publishes methodology, judge configuration, and raw outputs with each report so anyone can regrade. Benchmark engineered by MKTNG.
+Outputs are scored against the practice files in this repo by a **three-family judge panel**: Anthropic (Claude Opus 4.6), OpenAI (GPT-5.5), and Meta (Muse Spark 1.3). Human calibration sits on every run.
+
+Golden prompts for contributors live in `tests/prompts/`. The benchmark repository publishes methodology, judge configuration, and raw outputs with each report so anyone can regrade. Benchmark engineered by MKTNG.
 
 <!-- TODO: replace with the public methodology URL when published on goldendoodleai.com -->
+
+Early monthly runs are a calibration series and are not published as findings.
 
 ## Source of truth (maintainers and scoring)
 
