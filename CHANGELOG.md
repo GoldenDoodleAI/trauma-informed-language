@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+Fix: the trauma-informed-communications `SKILL.md` front matter was not valid YAML. Its description contains "trauma: shelters", and an unquoted colon followed by a space makes strict parsers (PyYAML, js-yaml, the `yaml` npm package, gray-matter) reject the whole block. `scripts/build.py` now quotes a description only when a plain YAML scalar would break, so only the trauma-informed files change. Human-centered and human voice files are byte-identical to v1.0.0.
+
+Model-facing text is unchanged: `packaging/compiled/`, `packaging/chatgpt/`, `standard.md`, `module.md` and the frozen v0.1.1 SKILL bodies are untouched. `verify_request_parity.py` reports NEW_BENCH_BASELINE=no.
+
+New CI test `tests/test_skill_frontmatter.py` parses every shipped SKILL.md (loose and zipped) with PyYAML `safe_load` and checks name format, name-to-folder match, description length, and that zips hold SKILL.md at the root with no enclosing folder. The build now skips rewriting a zip whose contents already match, so unchanged skills keep identical bytes.
+
 ## v0.2.0 (October 2026)
 
 Breaking file and folder renames: primary compiled and skill paths are `human-centered-language` and `trauma-informed-communications`. Marketplace packaging (`goldendoodle-ai`, `plugins/`, manifests), `VERSION`, and CI manifest tests. Legacy compiled filenames `dignified-language.md` and `trauma-informed.md` remain byte-identical copies of the new primary files for one release.
