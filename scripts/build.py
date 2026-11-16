@@ -127,11 +127,30 @@ def render_human_voice():
     return PREAMBLE["human-voice"] + body
 
 
+def yaml_scalar(value):
+    """Return value as a YAML scalar that strict parsers accept.
+
+    Plain scalars break on ": " or " #" (PyYAML, js-yaml and others reject
+    them). Quote only when needed so descriptions that already parse stay
+    byte-identical.
+    """
+    unsafe_start = tuple("!&*[]{}|>'\"%@`,?:-#")
+    if (
+        ": " in value
+        or " #" in value
+        or value.endswith(":")
+        or value.startswith(unsafe_start)
+        or value != value.strip()
+    ):
+        return json.dumps(value, ensure_ascii=False)
+    return value
+
+
 def skill_md(layer_key):
     return (
         "---\n"
         f"name: {layer_key}\n"
-        f"description: {PLUGIN_DESCRIPTION[layer_key]}\n"
+        f"description: {yaml_scalar(PLUGIN_DESCRIPTION[layer_key])}\n"
         "license: CC-BY-4.0\n"
         "metadata:\n"
         f"  version: {VERSION}\n"
@@ -159,6 +178,24 @@ def human_voice_outputs():
     ]
 
 
+def zip_matches(zip_path, skill_dir):
+    """True when zip_path already holds exactly the files in skill_dir."""
+    if not zip_path.exists():
+        return False
+    with zipfile.ZipFile(zip_path, "r") as existing:
+        expected = {
+            (path.name, path.read_bytes())
+            for path in skill_dir.iterdir()
+            if path.is_file()
+        }
+        actual = {
+            (info.filename, existing.read(info.filename))
+            for info in existing.infolist()
+            if not info.is_dir()
+        }
+    return expected == actual
+
+
 def build_gemini_zip(skill_name, check, stale):
     """Zip a Gemini skill folder (SKILL.md + companion) for upload."""
     skill_dir = PKG / "gemini" / skill_name
@@ -184,6 +221,9 @@ def build_gemini_zip(skill_name, check, stale):
                 stale.append(str(zip_path.relative_to(ROOT)))
         return
 
+    if zip_matches(zip_path, skill_dir):
+        print(f"unchanged {zip_path.relative_to(ROOT)}")
+        return
     with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
         for path in sorted(skill_dir.iterdir()):
             if path.is_file():
@@ -225,6 +265,9 @@ def build_skill_zip(skill_name, check, stale):
                 stale.append(str(zip_path.relative_to(ROOT)))
         return
 
+    if zip_matches(zip_path, skill_dir):
+        print(f"unchanged {zip_path.relative_to(ROOT)}")
+        return
     with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
         for path in sorted(skill_dir.iterdir()):
             if path.is_file():

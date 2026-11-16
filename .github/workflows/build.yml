@@ -22,5 +22,9 @@ jobs:
         run: python3 -m unittest tests/test_harm_tags.py -v
       - name: Marketplace manifest tests
         run: python3 -m unittest tests/test_manifests.py -v
+      - name: Install PyYAML for strict front matter checks
+        run: python3 -m pip install pyyaml
+      - name: Skill front matter and zip layout tests
+        run: python3 -m unittest tests/test_skill_frontmatter.py -v
       - name: Request parity check (compiled vs main)
         run: python3 scripts/verify_request_parity.py
